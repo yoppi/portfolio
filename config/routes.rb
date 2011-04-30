@@ -1,4 +1,8 @@
 Portfolio::Application.routes.draw do
+  # Portfolio Top page
+  get 'home' => 'home#index'
+  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
