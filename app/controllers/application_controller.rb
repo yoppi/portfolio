@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 private
   # TODO: generate from configuration file
   def load_menu
-    @menus = %w[blog twitter github me]
+    @menus = %w[home blog twitter github]
   end
 end
