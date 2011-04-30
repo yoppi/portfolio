@@ -27,7 +27,7 @@
   text-align: center;
   color: black;
 }
-#menu a:hover {
+#menu a:hover, a.on {
   background-color: #FF6600;
   color: white;
 }

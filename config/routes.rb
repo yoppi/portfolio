@@ -3,6 +3,11 @@ Portfolio::Application.routes.draw do
   get 'home' => 'home#index'
   root :to => 'home#index'
 
+  # other menus
+  get 'blog' => 'blog#index'
+  get 'twitter' => 'twitter#index'
+  get 'github' => 'github#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
