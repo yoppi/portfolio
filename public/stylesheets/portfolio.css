@@ -1,16 +1,15 @@
+@charset "utf-8";
 /**
  * portfolio design
  */
-@charset "utf-8";
 
-/** header {{{*/ 
+/** header {{{1*/
 #header h1 {
   text-align: right;
   font: Bold 55px 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #888888;
   border-bottom: 1px dashed #666666;
 }
-
 #menu {
   height: 50px;
 }
@@ -18,7 +17,7 @@
   list-style: none;
 }
 #menu li {
-  display: inline; 
+  display: inline;
 }
 #menu a {
   font-family: Arial, Helvetica, sans-serif;
@@ -32,9 +31,20 @@
   color: white;
 }
 
-/** footer {{{*/
+/** content {{{1*/
+#content {
+  width: 80%;
+}
+#content p {
+  /** using Google Font API */
+  font: normal medium Lato,serif;
+  text-align: justify;
+}
+
+/** footer {{{1*/
 #footer {
   color: #888888;
   padding-top: 10px;
   border-top: 1px dashed #666666;
 }
+/* vim: set foldmethod=marker: */
