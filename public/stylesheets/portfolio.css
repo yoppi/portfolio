@@ -36,7 +36,7 @@
   width: 80%;
 }
 #content p {
-  /** using Google Font API */
+  /** Google Font API is used to Lato font */
   font: normal medium Lato,serif;
   text-align: justify;
 }
