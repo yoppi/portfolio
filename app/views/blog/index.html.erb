@@ -4,7 +4,7 @@
 <div id="blog-items">
 <% @blog.items.each do |item| %>
 <div class="blog-item">
-  <div class="blog-title"><%= item.title %></div>
+  <div class="blog-title"><a href="<%= item.link %>"><%= item.title %></a></div>
   <div class="blog-date"><%= item.date %></div>
   <div class="blog-description"><%= item.description %></div>
 </div>
