@@ -3,7 +3,7 @@
  */
 @charset "utf-8";
 
-/** header {{{*/ 
+/** header {{{*/
 #header h1 {
   text-align: right;
   font: Bold 55px 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -33,11 +33,16 @@
 }
 
 /** content {{{*/
+#blog-container {
+  font-family: "ヒラギノ明朝 Pro W3","ヒラギノ明朝 Pro","ヒラギノ明朝 ProN","Hiragino Mincho Gothic Pro","小塚明朝 Pro","メイリオ","Meiryo", serif;
+  /**font-family: Arial, Helvetica, sans-serif;*/
+}
 #blog-items {
 }
 
 .blog-item {
 }
+
 /** footer {{{*/
 #footer {
   color: #888888;
