@@ -44,9 +44,41 @@
 #blog-container {
   font-family: Arial, Helvetica, sans-serif;
 }
+#blog-title {
+  text-align: right;
+}
+#blog-title a {
+  font-weight: bold;
+  font-size: 24px;
+  color: #808080;
+  text-decoration: none;
+}
+#blog-title a:hover {
+  color: #FF7700;
+}
 #blog-items {
+  position relative;
+  display: block;
 }
 .blog-item {
+  border-bottom: 1px solid #EAEAEA;
+  min-height: 60px;
+  padding: 10px 10px;
+}
+.blog-item:hover {
+  background-color: #EDEDED;
+}
+.blog-title {
+}
+.blog-title a {
+  color: #404040;
+  font-weight: bold;
+}
+.blog-title a:hover {
+  color: #FF7700;
+}
+.blog-date {
+  text-align: right;
 }
 
 /** footer {{{1*/
