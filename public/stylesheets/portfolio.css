@@ -73,6 +73,7 @@
 .blog-title a {
   color: #404040;
   font-weight: bold;
+  text-decoration: none;
 }
 .blog-title a:hover {
   color: #FF7700;
