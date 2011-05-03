@@ -45,7 +45,7 @@ class BlogController < ApplicationController
           :title => (item/'title').inner_text,
           :link => (item/'link').inner_text,
           :description => (item/'description').inner_text,
-          :date => (item/'date').inner_text,
+          :date => (item/'.//dc:date').inner_text,
         }
       end
     end
