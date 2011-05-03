@@ -6,29 +6,29 @@ class BlogController < ApplicationController
   HATEDA_RSS_URL = "http://d.hatena.ne.jp/yoppiblog/rss"
 
   def index
-    rss = open_rss(HATEDA_RSS_URL)
-    @blog = HatenaDialyRSS.parse(rss)
-  end
-
-  def open_rss(rss_url)
-    begin
-      return Nokogiri::XML.parse(open(rss_url))
-    rescue => e
-      # not yet
-    end
+    @blog = HatenaDialyRSS.parse(HATEDA_RSS_URL)
   end
 
   class HatenaDialyRSS
-    # FIXME: assert 'rss' is Nokogiri Object
-    def self.parse(rss)
-      new(rss)
+    # FIXME: assert 'rss' is URL
+    def self.parse(url)
+      new(url)
     end
 
-    def initialize(rss)
+    def initialize(url)
+      rss = open_rss(url)
       @channel = parse_channel(rss)
       @items = parse_items(rss)
     end
     attr_reader :channel, :items
+
+    def open_rss(url)
+      begin
+        return Nokogiri::XML.parse(open(url))
+      rescue => e
+        # not yet
+      end
+    end
 
     def parse_channel(rss)
       return {:title => "", :link => ""} unless rss
