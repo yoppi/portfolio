@@ -12,7 +12,7 @@ class BlogController < ApplicationController
 
   def open_rss(rss_url)
     begin
-      return Nokogiri::HTML.parse(open(rss_url))
+      return Nokogiri::XML.parse(open(rss_url))
     rescue => e
       # not yet
     end
