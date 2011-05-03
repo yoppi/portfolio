@@ -41,6 +41,15 @@
   text-align: justify;
 }
 
+#blog-container {
+  font-family: "ヒラギノ明朝 Pro W3","ヒラギノ明朝 Pro","ヒラギノ明朝 ProN","Hiragino Mincho Gothic Pro","小塚明朝 Pro","メイリオ","Meiryo", serif;
+  /**font-family: Arial, Helvetica, sans-serif;*/
+}
+#blog-items {
+}
+.blog-item {
+}
+
 /** footer {{{1*/
 #footer {
   color: #888888;
