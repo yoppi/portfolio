@@ -1,4 +1,6 @@
-<h2>Blog:<a href="<%= @blog.channel.link %>"><%= @blog.channel.title %></a></h2>
+<h2>Blog</h2>
+<div id="blog-container">
+<div id="blog-title"><a href="<%= @blog.channel.link %>"><%= @blog.channel.title %></a></div>
 <div id="blog-items">
 <% @blog.items.each do |item| %>
 <div class="blog-item">
@@ -7,4 +9,5 @@
   <div class="blog-description"><%= item.description %></div>
 </div>
 <% end %>
+</div>
 </div>
