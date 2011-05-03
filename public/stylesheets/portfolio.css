@@ -32,6 +32,12 @@
   color: white;
 }
 
+/** content {{{*/
+#blog-items {
+}
+
+.blog-item {
+}
 /** footer {{{*/
 #footer {
   color: #888888;
