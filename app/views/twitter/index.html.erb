@@ -9,7 +9,7 @@
   <div class="tweet-content">
     <div class="tweet-row">
       <span class="tweet-user-name">
-        <a href="http://twitter.com/<%= status.user.screen_name %>"><%= status.user.screen_name %></a>
+        <a class="tweet-screen-name" href="http://twitter.com/<%= status.user.screen_name %>"><%= status.user.screen_name %></a>
       </span>
       <span class="tweet-full-name"><%= status.user.name %></span>
     </div>
@@ -17,7 +17,7 @@
       <div class="tweet-text"><%= status.text %></div>
     </div>
     <div class="tweet-row">
-      <a href="#" class="tweet-timestamp"></a>
+      <a href="http://twitter.com/<%= status.user.screen_name%>/status/" class="tweet-timestamp"><%= status.created_at %></a>
     </div>
   </div>
 </div>
