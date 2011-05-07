@@ -1,0 +1,12 @@
+<h2>GitHub</h2>
+<div id="activity-container">
+<div id="activity-items">
+<% @activities.each do |activity| %>
+<div class="activity-item">
+  <div class="activity-title"><%= activity.title %></div>
+  <div class="activity-date"><%= activity.published %></div>
+  <div class="activity-detail"><%= raw(activity.content) %></div>
+</div>
+<% end %>
+</div>
+</div>
