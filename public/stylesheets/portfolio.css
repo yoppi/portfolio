@@ -69,6 +69,9 @@
 .blog-item:hover {
   background-color: #EDEDED;
 }
+.blog-item:hover .blog-title a {
+  color: #FF7700 !important;
+}
 .blog-title {
 }
 .blog-title a {
@@ -76,11 +79,9 @@
   font-weight: bold;
   text-decoration: none;
 }
-.blog-title a:hover {
-  color: #FF7700;
-}
 .blog-date {
   text-align: right;
+  color: #999;
 }
 
 /** twitter container {{{2*/
