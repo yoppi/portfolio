@@ -85,6 +85,9 @@
 }
 
 /** twitter container {{{2*/
+#status-container {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .status-item {
   border-bottom: 1px solid #EAEAEA;
   min-height: 60px;
