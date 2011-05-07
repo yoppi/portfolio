@@ -1,0 +1,26 @@
+<h2>Twitter</h2>
+<div id="status-container">
+<div id="status-items">
+<% @statuses.each do |status| %>
+<div class="status-item">
+  <div class="tweet-image">
+    <img height="48" width="48" src="<%= status.user.profile_image_url %>" alt="status-image" />
+  </div>
+  <div class="tweet-content">
+    <div class="tweet-row">
+      <span class="tweet-user-name">
+        <a class="tweet-screen-name" href="http://twitter.com/<%= status.user.screen_name %>"><%= status.user.screen_name %></a>
+      </span>
+      <span class="tweet-full-name"><%= status.user.name %></span>
+    </div>
+    <div class="tweet-row">
+      <div class="tweet-text"><%= status.text %></div>
+    </div>
+    <div class="tweet-row">
+      <a href="http://twitter.com/<%= status.user.screen_name%>/status/<%= status.id %>" class="tweet-timestamp"><%= status.created_at %></a>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
