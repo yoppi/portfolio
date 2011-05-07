@@ -36,7 +36,7 @@ p ret
 end
 
 class Twitter
-  attr_reader :created_at, :text, :source, :user
+  attr_reader :created_at, :id, :text, :source, :user
   @@finder = ::TwitterFinder.new
 
   def self.find_by_user_id(options)
@@ -51,7 +51,8 @@ class Twitter
   end
 
   def parse_status(status)
-    @created_at = (status/'created_at').inner_text
+    @created_at = (status/'./created_at').inner_text
+    @id = (status/'./id').inner_text
     @text = (status/'text').inner_text
     @source = (status/'source').inner_text
     @user = {
