@@ -92,6 +92,9 @@
 .status-item:hover {
   background-color: #EDEDED;
 }
+.status-item:hover .tweet-screen-name, .status-item:hover .tweet-timestamp {
+  color: #FF7700 !important;
+}
 .tweet-image {
   float: left;
   height: 48px;
