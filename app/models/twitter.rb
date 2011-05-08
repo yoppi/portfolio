@@ -1,5 +1,5 @@
 class TwitterFinder
-  USER_TIMELINE_API = "http://api.twitter.com/%s/statuses/user_timeline.%s?%s"
+  USER_TIMELINE_API = "https://api.twitter.com/%s/statuses/user_timeline.%s?%s"
   VERSION = 1
   FORMATS = %w[json xml rss atom]
   PARAMS = [
