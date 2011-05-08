@@ -22,9 +22,7 @@ class TwitterFinder
     version = options.has_key(':version') ? options.version : VERSION
     format = options.has_key(':format') ? options.format : 'xml'
     params = create_parasm(options)
-    ret = USER_TIMELINE_API % [version, format, params.join('?')]
-p ret
-    ret
+    USER_TIMELINE_API % [version, format, params.join('?')]
   end
 
   def create_parasm(options)
