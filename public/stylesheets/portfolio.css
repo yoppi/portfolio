@@ -133,6 +133,15 @@
   text-decoration: none;
 }
 
+/** github container {{{2*/
+.activity-item {
+  border-bottom: 1px solid #EAEAEA;
+  min-height: 60px;
+  padding: 10px 10px;
+}
+.activity-item:hover {
+  background-color: #EDEDED;
+}
 /** footer {{{1*/
 #footer {
   color: #888888;
