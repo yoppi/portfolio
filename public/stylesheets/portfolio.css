@@ -41,6 +41,17 @@
   text-align: justify;
 }
 
+/** home-container {{{2*/
+#home-container a {
+  font-weight: bold;
+  color: #FF7700;
+  text-decoration: none;
+}
+
+#home-container a:hover {
+  text-decoration: underline;
+}
+
 /** blog container {{{2*/
 #blog-container {
   font-family: Arial, Helvetica, sans-serif;
