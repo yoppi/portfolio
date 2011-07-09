@@ -38,5 +38,11 @@ module Portfolio
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    require 'open-uri'
+    require 'openssl'
+    require 'hash'
+
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 end

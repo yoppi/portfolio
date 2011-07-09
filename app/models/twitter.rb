@@ -1,10 +1,4 @@
-require 'open-uri'
-require 'openssl'
-require 'hash'
-
 class TwitterFinder
-
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   USER_TIMELINE_API = "https://api.twitter.com/%s/statuses/user_timeline.%s?%s"
   VERSION = 1

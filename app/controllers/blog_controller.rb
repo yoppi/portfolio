@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'hash'
-
 class BlogController < ApplicationController
 
   HATEDA_RSS_URL = "http://d.hatena.ne.jp/yoppiblog/rss"
