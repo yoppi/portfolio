@@ -1,4 +1,10 @@
+require 'open-uri'
+require 'openssl'
+require 'hash'
+
 class GithubActivity
+
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   ACTIVITY_URL = "https://github.com/%s.atom"
 

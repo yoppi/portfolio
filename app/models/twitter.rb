@@ -1,4 +1,11 @@
+require 'open-uri'
+require 'openssl'
+require 'hash'
+
 class TwitterFinder
+
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
   USER_TIMELINE_API = "https://api.twitter.com/%s/statuses/user_timeline.%s?%s"
   VERSION = 1
   FORMATS = %w[json xml rss atom]
@@ -19,8 +26,8 @@ class TwitterFinder
   end
 
   def create_api(options)
-    version = options.has_key(':version') ? options.version : VERSION
-    format = options.has_key(':format') ? options.format : 'xml'
+    version = options.has_key?(':version') ? options.version : VERSION
+    format = options.has_key?(':format') ? options.format : 'xml'
     params = create_parasm(options)
     USER_TIMELINE_API % [version, format, params.join('?')]
   end
