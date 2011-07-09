@@ -42,8 +42,12 @@ class HatenaDialyRSS
   end
 end
 
-class Blog
+class Blog < AbstractModel
   def self.find_by_user(user)
-    HatenaDialyRSS.parse(user)
+    ret = $redis.get(cache_key("find_by_user:#{user}"))
+    return ActiveSupport::JSON.decode(ret) if ret
+    ret = HatenaDialyRSS.parse(user)
+    $redis.set(cache_key("find_by_user:#{user}"), ret.to_json)
+    return ret
   end
 end
