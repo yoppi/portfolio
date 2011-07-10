@@ -15,7 +15,7 @@ class TwitterFinder
     :include_entities,
   ]
 
-  def find_by_user_id(options)
+  def find_with(options)
     Nokogiri::XML.parse(open(create_api(options)))
   end
 
@@ -38,8 +38,8 @@ class Twitter
   attr_reader :created_at, :id, :text, :source, :user
   @@finder = ::TwitterFinder.new
 
-  def self.find_by_user_id(options)
-    statuses = @@finder.find_by_user_id(options)
+  def self.find_with(options)
+    statuses = @@finder.find_with(options)
     (statuses/'status').inject([]) do |ret, timeline|
       ret << new(timeline)
     end
