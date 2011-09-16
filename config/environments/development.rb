@@ -23,6 +23,6 @@ Portfolio::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  ENV['REDIS_TOGO'] = "http://localhost:6379/"
+  ENV['REDISTOGO_URL'] = "http://localhost:6379/"
 end
 
