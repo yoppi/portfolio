@@ -25,8 +25,6 @@
   color: white;
 }
 
-li { margin-bottom: 5px; }
-
 /** content {{{1*/
 #content {
   /** Google Font API is used to Lato font */
@@ -34,17 +32,11 @@ li { margin-bottom: 5px; }
   text-align: justify;
   width: 80%;
 }
+#content li { margin-bottom: 5px; }
 
 /** home-container {{{2*/
-#home-container a {
-  font-weight: bold;
-  color: #FF7700;
-  text-decoration: none;
-}
-
-#home-container a:hover {
-  text-decoration: underline;
-}
+#home-container a, #activity-container a { font-weight: bold; color: #FF7700; text-decoration: none; }
+#home-container a:hover, #activity-container a:hover { text-decoration: underline; }
 
 /** blog container {{{2*/
 #blog-container {
