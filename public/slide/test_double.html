@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head><!--{{{1-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <title>Introduction To TestDouble</title>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
+    <link id="prettify-link" href="/slide/src/prettify/prettify.css" rel="stylesheet" type="text/css"/>
+    <link href="/slide/styles/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/slide/styles/presentation.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/slide/styles/common.css" rel="stylesheet" type="text/css" media="screen" />
+    <link class="theme" href="/slide/styles/default.css" rel="stylesheet" type="text/css" media="screen" />
+    <link class="theme" href="/slide/styles/moon.css" rel="stylesheet" type="text/css" media="screen" />
+    <link class="theme" href="/slide/styles/sand.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link class="theme" href="/slide/styles/sea_wave.css" rel="stylesheet" type="text/css" media="screen"/>
+  </head>
+  <body><!--{{{1-->
+    <div id="flex-container">
+
+    <nav id="helpers">
+      <button title="Previous slide" id="nav-prev" class="nav-prev">&#8701;</button> 
+      <button title="Jump to a random slide" id="slide-no">5</button> 
+      <button title="Next slide" id="nav-next" class="nav-next">&#8702;</button>
+      <menu>
+        <button type="checkbox" data-command="toc" title="Table of Contents" class="toc">TOC</button>
+        <!-- <button type="checkbox" data-command="resources" title="View Related Resources">&#9734;</button> -->
+        <button type="checkbox" data-command="notes" title="View Slide Notes">&#9999;</button>
+        <button type="checkbox" data-command="source" title="View slide source">&#8635;</button>
+        <button type="checkbox" data-command="help" title="View Help">?</button>
+      </menu>
+    </nav>
+
+    <div class="slides">
+      <div id="presentation-counter" style="visibility: hidden">Loading...</div>
+        <div class="slide" id="title-slide"><!--{{{2-->
+          <section class="middle">
+            <hgroup>
+              <h1>
+                Introduction To *TestDouble*
+              </h1>
+              <h2>
+                One of a xUnit Test Patterns
+              </h2>
+            </hgroup>
+            <p>@yoppiblog/TIM</p>
+          </section>
+        </div>
+
+        <div class="slide" id="how-do-you-write-unittest"><!--{{{2-->
+          <section class="middle one ja">
+            ユニットテスト書いてますか?
+          </section>
+        </div>
+
+        <div class="slide" id="why-dont-we-write-unittest"><!--{{{2-->
+          <header>Why don't we write Unit Test?</header>
+          <section class="ja">
+            <ul>
+              <li>時間がない/割けない</li>
+              <li>気分的に書きたくない</li>
+              <li>書かなくてもバグないと信じてる</li>
+              <li data-build>そもそも書き方がわからない<span class="key">&larr;</span></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="learn-patterns"><!--{{{2-->
+          <section class="middle one ja">
+            型を覚えると書く気になれる
+          </section>
+        </div>
+
+        <div class="slide" id="xunittest-patterns"><!--{{{2-->
+          <header>xUnit Test Patterns</header>
+          <section>
+            <ul id="test-pattern">
+              <li data-auto><span class="basic">Test Definition</span></li>
+              <li data-auto><span class="basic">Test Execution</span></li>
+              <li data-auto>Fixture Setup Pattern</li>
+              <li data-auto>Result Verifiction Patterns</li>
+              <li data-auto>Fixture Teardown Patterns</li>
+              <li data-build><span class="topic">TestDouble Patterns</span></li>
+              <li data-auto>Test Organization Patterns</li>
+              <li data-auto>Database Patterns</li>
+              <li data-auto>Design-for-Testability</li>
+              <li data-auto>Value Patterns</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="flow-of-unittest"><!--{{{2-->
+          <header>Four-Phase Test</header>
+          <section>
+            <p class="ja">ユニットテストの基本の流れ</p>
+            <ul>
+              <li>Setup</li>
+              <li>Excersize</li>
+              <li>Verification</li>
+              <li>Teardown</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="test-double-overview1">
+          <header>What's TestDouble?</header>
+          <section>
+            <img src="/slide/images/test_double_overview1_t.png" width="850" height="480"/>
+          </section>
+        </div>
+
+        <div class="slide" id="test-double-overview2">
+          <header>What's TestDouble?</header>
+          <section>
+            <img src="/slide/images/test_double_overview2_t.png" width="850" height="480"/>
+          </section>
+        </div>
+
+        <div class="slide" id="whats-testdouble"><!--{{{2-->
+          <header>What's TestDouble?</header>
+          <section class="ja">
+            <p>SUT(System Under Test)がテスト環境下で使用できない特定のモジュール(DOC:Dependend-On Component)に依存している場合、その代替物を用意してテストすること</p>
+            <ul>
+              <li>ネットワークやDB接続等</li>
+              <li>ロジックが複雑</li>
+              <li>データを用意できない</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="note-test-double"><!--{{{2-->
+          <header>TestDouble Note</header>
+          <section class="ja">
+            <ul>
+              <li>
+              <dl>
+                <dt>DOCが持つすべての機能を実装しなくてもよい</dt>
+                <dd>テストが必要とする機能のみを実装する</dd>
+                <dd>同一のDOCを対象とする場合でもテストに合わせて複数のTestDoubleを用意する</dd>
+              </dl>
+              </li>
+              <li>
+                <dt>Mockiest</dt>
+                <dd>あらゆるDOCをTestDoubleする人を指す</dd>
+                <dd>個人的にはテスト書かないよりよっぽどよい<dd>
+                <dd>TestDoubleを使いすぎるとテストがもろくなるけど、そこはテストをリファクタリングしていく</dd>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="test-double-lib"><!--{{{2-->
+          <header>TestDouble Library</header>
+          <section class="ja">
+            <p>TestフレームワークがあるようにTestDoubleの実装を容易にするライブラリがある</p>
+            <ul>
+              <li>Java
+                <ul>
+                <li>EasyMock</li>
+                <li>Mockito</li>
+                </ul>
+              </li>
+              <li>Ruby
+                <ul>
+                <li>RSpec Mock</li>
+                <li>rr(DoubleRuby)</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="testdouble-types"><!--{{{2-->
+          <header>TestDouble Types</header>
+          <section>
+            <img src="/slide/images/test_double_types_t.png" width="850" height="312"/> 
+          </section>
+        </div>
+
+        <div class="slide" id="table-of-contents"><!--{{{2-->
+          <header>Today </header>
+          <section>
+            <p class="ja">xUnit Test Patternsの23章を紹介<p>
+            <ul id="toc-list"></ul>
+          </section>
+        </div>
+
+        <div class="slide transitionSlide" id="test-stub-title"><!--{{{2-->
+          <section class="middle">
+            <h1>Test Stub</h1>
+          </section>
+        </div>
+
+        <div class="slide test-stub" id="test-stub-overview"><!--{{{2-->
+          <header>Test Stub Overview</header>
+          <section>
+            <img src="/slide/images/test_stub_t.png" width="850" height="470">
+          </section>
+        </div>
+
+        <div class="slide test-stub" id="stub-vs-mock"><!--{{{2-->
+          <header>Stub vs Mock</header>
+          <section class="ja">
+            <p>StubとMockを混同しがちだけど、StubなのかMockなのかどのTestDoubleを使ってるのか把握すること</p>
+            <ul>
+              <li>Stubはテスト実行時に実行できない/されたくないDOCを置き換えて戻り値をVerifyする</li>
+              <li>Mockも同様にDOCを置き換えるが、そのDOCの呼び出しが特定の手順で呼ばれることをVerifyする</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide test-stub" id="test-stub-example"><!--{{{2-->
+          <header>Test Stub Example</header>
+          <section>
+            <pre>
+public class C {
+    public boolean isLocalHost(HttpServletRequest request) {
+        if (request.getRemoteAddr().equals("127.0.0.1")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}</pre>
+            <p>DOC: HttpServletRequest</p>
+            <pre>
+@Test
+public void ローカルホストであること() {
+    HttpServletRequest request = mock(HttpServletRequest.class);
+    when(request.getRemoteAddr()).thenReturn("127.0.0.1");
+    C c = new C();
+    assertTrue(c.isLocalHost(request));
+}
+            </pre>
+          </section>
+        </div>
+
+        <div class="slide transitionSlide" id="test-spy-title"><!--{{{2-->
+          <section class="middle">
+            <h1>Test Spy</h1>
+          </section>
+        </div>
+
+        <div class="slide test-spy" id="test-spy-overview"><!--{{{2-->
+          <header>Test Spy Overview</header>
+          <section>
+            <img src="/slide/images/test_spy_t.png" width="850" height="470">
+          </section>
+        </div>
+
+        <div class="slide test-spy" id="whats-test-spy"><!--{{{2-->
+          <header>What's Test Spy</header>
+          <section class="ja">
+          <p>SUTが他のコンポーネントへの出力があるときにそれを検証したい場合、TestDoubleを使って別コンポーネントへの出力を取り込み後で検証すること</p>
+          </section>
+        </div>
+
+        <div class="slide" id="test-spy-example"><!--{{{2-->
+          <header>Test Spy Example</header>
+          <section class="ja">
+          <pre>
+public class Product {
+    public static void delete(Product p) {
+        Entity.delete(p);
+        log.info(String.format("deleted product[%s]", p.id));
+    }
+}
+          </pre>
+          <p>DOC: Logger</p>
+          <pre>
+@Test
+public void 削除した製品は存在しないこと() {
+    // setup
+    Product p = new Product();
+    Product.insert(p);
+    // excersize
+    Product.delete(p);
+    // verify
+    assertFalse(Product.exists(p));
+}
+          </pre>
+          <p>SUTの間接的な出力(ログ出力)は検証されていない。</p>
+          </section>
+        </div>
+
+        <div class="slide" id="refactoring-test-spy"><!--{{{2-->
+          <header>Refactoring Test Spy</header>
+          <section class="ja">
+          <pre>
+@Test
+public void 削除した製品は存在しないこと() {
+    // setup
+    Product p = new Product();
+    Product.insert(p);
+    log = spy(Logger.new(Product.class));
+    Product.setLogger(log);
+    // excersize
+    Product.delete(p);
+    // verify
+    assertFalse(Product.exists(p));
+    verify(log, times(1)).info(String.format("deleted product[%s]", p.id));
+}
+          </pre>
+          </section>
+        </div>
+
+        <div class="slide transitionSlide" id="mock-object"><!--{{{2-->
+          <section class="middle">
+            <h1>Mock Object</h1>
+          </section>
+        </div>
+
+        <div class="slide" id="mock-object-overview"><!--{{{2-->
+          <header>Mock Object Overview</header>
+          <section>
+            <img src="/slide/images/mock_object_t.png" width="850" height="470">
+          </section>
+        </div>
+
+        <div class="slide" id="whats-mockobject"><!--{{{2-->
+          <header>What's Mock Object?</header>
+          <section class="ja">
+            <ul> 
+              <li>DOCの代替となるもの</li>
+              <li>それ自身はassertionしない</li>
+              <li>妥当性の検証に使われる</li>
+              <li>多くの人はTest Stubと混同している(TestDoubleツールの命名に依るところも大きい)</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="strict-or-nice-mock"><!--{{{2-->
+          <header>Strict or Nice</header>
+          <section class="ja">
+            <p>厳密なモック(Strict Mock)と寛容なモック(Nice Mock)の2種類に分類できる</p>
+            <ul>
+              <li>厳密なモックはmockに対して実行するメソッドが違えばその場でテストを失敗させる</li>
+              <li>寛容なモックは呼び出されるメソッドや回数、引数がことなってもテストを失敗させない</li>
+            </ul>
+            <p>EasyMockではNiceMockで寛容なモックを作成でき、mockitoではすべてのmockはNiceMockになる</p>
+          </section>
+        </div>
+
+        <div class="slide" id="mock-object-example"><!--{{{2-->
+          <header>Mock Object Example</header>
+          <section class="ja">
+          <p>Spyはリアルオブジェクトだったが、mockは仮想的なオブジェクトである</p>
+          <pre>
+@Test
+public void 削除した製品は存在しないこと() {
+    // setup
+    Product p = new Product();
+    Product.insert(p);
+    log = mock(Logger.class);
+    Product.setLogger(log);
+    // excersize
+    Product.delete(p);
+    // verify
+    assertFalse(Product.exists(p));
+    verify(log, times(1)).info(String.format("deleted product[%s]", p.id));
+}
+          </pre>
+          </section>
+        </div>
+
+        <div class="slide transitionSlide" id="fake-object"><!--{{{2-->
+          <section class="middle">
+            <h1>Fake Object</h1>
+          </section>
+        </div>
+
+        <div class="slide" id="fake-object-overview"><!--{{{2-->
+          <header>Fake Object Overview</header>
+          <section>
+            <img src="/slide/images/fake_object_t.png" width="850" height="470">
+          </section>
+        </div>
+
+        <div class="slide" id="whats-fake-object"><!--{{{2-->
+          <header>What's Fake Object</header>
+          <section class="ja">
+          <p>基本的にStubとほぼ変わらないが、依存するコンポーネントと同等の機能を備えた軽量な実装を用意して使用する</p>
+          <p>たとえば、DBアクセスするなどテストに時間がかかる場合、
+             代替手段となるオブジェクトを仮想的なDBとして用いることでテストの高速化につなげる</p>
+          </section>
+        </div>
+
+        <div class="slide" id="when-use-fake-object"><!--{{{2-->
+          <header>When use Fake Object</header>
+          <section class="ja">
+            <p>SUTに依存するコンポーネントがテスト毎に実施する際に遅くなる場合</p>
+            <ul>
+              <li>Fake Database: HashMapなどで実装する</li>
+              <li>In Memory Database: HSQL、redisなど</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="slide" id="fake-object-example"><!--{{{2-->
+          <header>Fake Object Example</header>
+          <section>
+            <pre>
+public void 製品がスポット広告に正しく紐づけされること() {
+    // setup
+    ProductRoot pRoot = ProductRoot.newInstance();
+    Product p = Product.newInstance();
+    p.id = pRoot.id;
+    p.name = "真空ポンプ";
+    //...
+    SpotManager manager = new SpotManager();
+    AdvertisingSpot spot = AdvertisingSpot.newInstance();
+    manager.add(spot);
+    manager.addProduct(spot, p);
+    // excersize
+    Product<List> products = manager.relatedProducts(spot.id);
+    // verify
+    assertThat(products.size, is(1));
+    assertThat(products.get(0).getId(), is(p.id));
+}
+            </pre>
+          </section>
+        </div>
+
+        <div class="slide" id="fake-database"><!--{{{2-->
+          <header>Fake Database</header>
+          <section>
+          <pre>
+public class FakeService {
+    private static HashMap<Integer, AdvertisingSpot> spotTable = CollectionsUtil.newHashMap();
+    private static HashMap<Integer, Product> productTable = CollectionsUtil.newHashMap();
+    public int insert(AdvertisingSpot spot) {
+        spotTable.add(spot.id, spot);
+        return 1;
+    }
+    public int insert(Product product) {
+        productTable.put(product.id, spot);
+        return 1;
+    }
+    public AdvertisingSpot findById(Integer id) {
+        return spotTable.get(id);
+    }
+    public Product findById(Integer id) {
+        return productTable.get(id);
+    }
+}
+          </pre>
+          </section>
+        </div>
+
+        <div class="slide" id="fake-object-note">
+          <header>Fake Object Note</header>
+          <section class="ja">
+            <p>FakeObjectを組み込むインタフェースがないならそれをリファクタリングして作る</p> 
+          </section>
+        </div>
+
+        <div class="slide" id="conclusion">
+          <header>Conclusion</header>
+          <section class="ja">
+            <ul>
+              <li>テストを書くときに型に沿って書くと便利</li>
+              <li>さらにTestDoubleは便利ライブラリがあるので活用する</li>
+              <li>StubとMockの違いを意識しておくこと</li>
+              <li>とにかくテスト書くこと。リファクタリングはその次</li>
+            </ul>            
+          </section>
+        </div>
+
+        <div class="slide" id="reference-link"><!--{{{2-->
+          <header>Reference</header>
+          <section>
+            <ul>
+              <li><a href="http://mockito.googlecode.com/svn/tags/latest/javadoc/org/mockito/Mockito.html"> Mockito (Mockito API)</a></li>
+              <li><a href="http://http://xunitpatterns.com/index.html">xUnit Test Patterns</a></li>
+            </ul>
+          </section>
+        </div>
+
+        <div id="speaker-note" class="invisible" style="display: none;"></div>
+        <aside id="help" class="sidebar invisible" style="display: none;">
+          <table>
+            <caption>Help</caption>
+            <tbody>
+              <tr>
+                <th>Move Around</th>
+                <td>&larr;&nbsp;&rarr;</td>
+              </tr>
+              <tr>
+                <th>Source File</th>
+                <td>s</td>
+              </tr>
+              <tr>
+                <th>Change Theme</th>
+                <td>t</td>
+              </tr>
+              <tr>
+                <th>Syntax Highlight</th>
+                <td>h</td>
+              </tr>
+              <tr>
+                <th>Speaker Notes</th>
+                <td>n</td>
+              </tr>
+              <tr>
+                <th>Toggle 3D</th>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th>Help</th>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </aside>
+
+    </div> <!-- slides -->
+    </div>
+    
+    <!--[if lt IE 9]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
+    </script>
+    <script>CFInstall.check({ mode: "overlay" });</script>
+    <![endif]-->
+
+    <script src="/slide/src/prettify/prettify.js" onload="prettyPrint();" defer></script>
+    <script src="/slide/js/slide.js"></script>
+    <script>
+      // Check if new appcache is available, load it, and reload page.
+      if (window.applicationCache) {
+        window.applicationCache.addEventListener('updateready', function(e) {
+          if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            window.applicationCache.swapCache();
+            if (confirm('A new version of this site is available. Load it?')) {
+              window.location.reload();
+            }
+          }
+        }, false);
+      }
+    </script>
+  </body>
+</html>
