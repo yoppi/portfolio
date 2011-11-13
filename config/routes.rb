@@ -5,6 +5,8 @@ Portfolio::Application.routes.draw do
 
   # other menus
   get 'activity' => 'activity#index'
+  get 'activity/test_double' => 'activity#test_double'
+
   get 'blog' => 'blog#index'
   get 'twitter' => 'twitter#index'
   get 'github' => 'github#index'
