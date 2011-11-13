@@ -4,6 +4,7 @@ Portfolio::Application.routes.draw do
   root :to => 'home#index'
 
   # other menus
+  get 'activity' => 'activity#index'
   get 'blog' => 'blog#index'
   get 'twitter' => 'twitter#index'
   get 'github' => 'github#index'
