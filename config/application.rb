@@ -43,6 +43,5 @@ module Portfolio
     require 'openssl'
     require 'hash'
 
-    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 end
