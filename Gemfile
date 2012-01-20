@@ -10,6 +10,10 @@ gem 'nokogiri'
 gem 'rspec-rails'
 gem 'redis'
 
+group :productin do
+  gem 'pg'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
