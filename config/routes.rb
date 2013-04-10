@@ -1,15 +1,15 @@
 Portfolio::Application.routes.draw do
-  # Portfolio Top page
-  get 'home' => 'home#index'
   root :to => 'home#index'
 
-  # other menus
-  get 'activity' => 'activity#index'
-  get 'activity/test_double' => 'activity#test_double'
-
-  get 'blog' => 'blog#index'
-  get 'twitter' => 'twitter#index'
-  get 'github' => 'github#index'
+  resources :home, only: [:index]
+  resources :activity, only: [:index] do
+    collection do
+      get 'test_double'
+    end
+  end
+  resources :blog, only: [:index]
+  resources :twitter, only: [:index]
+  resources :github, only: [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
