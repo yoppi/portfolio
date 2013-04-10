@@ -2,11 +2,8 @@ class Hash
   # To access 'value' with 'key' method.
   #   {:key => value }.key
   def method_missing(method, *args)
-    if self.has_key?(method)
-      return self[method]
-    elsif self.has_key?(method.to_s)
-      return self[method.to_s]
-    end
+    ret = self[method] || self[method.to_s]
+    return ret if ret
     super
   end
 end
