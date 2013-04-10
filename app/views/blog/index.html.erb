@@ -1,12 +1,12 @@
 <h2>Blog</h2>
 <div id="blog-container">
-<div id="blog-title"><a href="<%= @blog.channel.link %>"><%= @blog.channel.title %></a></div>
+<div id="blog-title"><a href="<%= @blog.root.link %>"><%= @blog.root.title %></a></div>
 <div id="blog-items">
-<% @blog.items.each do |item| %>
+<% @blog.articles.each do |article| %>
 <div class="blog-item">
-  <div class="blog-title"><a href="<%= item.link %>"><%= item.title %></a></div>
-  <div class="blog-date"><%= item.date %></div>
-  <div class="blog-description"><%= item.description %></div>
+  <div class="blog-title"><a href="<%= article.link %>"><%= article.title %></a></div>
+  <div class="blog-date"><%= article.date %></div>
+  <div class="blog-description"><%= article.summary %></div>
 </div>
 <% end %>
 </div>
