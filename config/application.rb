@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -41,7 +40,5 @@ module Portfolio
 
     require 'open-uri'
     require 'openssl'
-    require 'hash'
-
   end
 end
