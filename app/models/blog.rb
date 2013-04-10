@@ -1,5 +1,6 @@
 class HatenaBlogFeed
   FEED_URL = "http://%s.hatenablog.com/feed"
+  attr_reader :root, :articles
 
   def self.parse(user)
     new(FEED_URL % user)
@@ -8,9 +9,8 @@ class HatenaBlogFeed
   def initialize(url)
     feed = open_feed(url)
     @root = parse_root(feed)
-    @entries = parse_entry(feed)
+    @articles = parse_article(feed)
   end
-  attr_reader :root, :entries
 
   def open_feed(url)
     begin
@@ -28,14 +28,14 @@ class HatenaBlogFeed
     }
   end
 
-  def parse_entry(feed)
+  def parse_article(feed)
     return [] unless feed
-    (feed/'entry').inject([]) do |ret, entry|
+    (feed/'entry').inject([]) do |ret, article|
       ret << {
-        title: (entry/'title').text,
-        link: (entry/'link').attr("href").value,
-        summary: (entry/'summary').text,
-        date: (entry/'published').text,
+        title: (article/'title').text,
+        link: (article/'link').attr("href").value,
+        summary: (article/'summary').text,
+        date: (article/'published').text,
       }
     end
   end
