@@ -1,19 +1,18 @@
-class HatenaDialyRSS
-
-  HATEDA_RSS_URL = "http://d.hatena.ne.jp/%s/rss"
+class HatenaBlogFeed
+  FEED_URL = "http://%s.hatenablog.com/feed"
 
   def self.parse(user)
-    new(HATEDA_RSS_URL % user)
+    new(FEED_URL % user)
   end
 
   def initialize(url)
-    rss = open_rss(url)
-    @channel = parse_channel(rss)
-    @items = parse_items(rss)
+    feed = open_feed(url)
+    @root = parse_root(feed)
+    @entries = parse_entry(feed)
   end
-  attr_reader :channel, :items
+  attr_reader :root, :entries
 
-  def open_rss(url)
+  def open_feed(url)
     begin
       return Nokogiri::XML.parse(open(url))
     rescue => e
@@ -21,22 +20,22 @@ class HatenaDialyRSS
     end
   end
 
-  def parse_channel(rss)
-    return {:title => "", :link => ""} unless rss
+  def parse_root(feed)
+    return {title: "", link: ""} unless feed
     {
-      :title => ((rss/'channel')/'title').inner_text,
-      :link => ((rss/'channel')/'link').inner_text,
+      title: (feed/'title').first.text,
+      link: (feed/'link').first.attr("href"),
     }
   end
 
-  def parse_items(rss)
-    return [] unless rss
-    (rss/'item').inject([]) do |ret, item|
+  def parse_entry(feed)
+    return [] unless feed
+    (feed/'entry').inject([]) do |ret, entry|
       ret << {
-        :title => (item/'title').inner_text,
-        :link => (item/'link').inner_text,
-        :description => (item/'description').inner_text,
-        :date => (item/'.//dc:date').inner_text,
+        title: (entry/'title').text,
+        link: (entry/'link').attr("href").value,
+        summary: (entry/'summary').text,
+        date: (entry/'published').text,
       }
     end
   end
@@ -46,9 +45,8 @@ class Blog < AbstractModel
   def self.find_by_user(user)
     ret = $redis.get(cache_key("find_by_user:#{user}"))
     return ActiveSupport::JSON.decode(ret) if ret
-    ret = HatenaDialyRSS.parse(user)
-    $redis.set(cache_key("find_by_user:#{user}"), ret.to_json)
-    $redis.expire(cache_key("find_by_user:#{user}"), 3600)
-    return ret
+    ret = HatenaBlogFeed.parse(user)
+    $redis.setex(cache_key("find_by_user:#{user}"), 360, ret.to_json)
+    ret
   end
 end
