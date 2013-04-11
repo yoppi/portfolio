@@ -1,7 +1,7 @@
 # Redis settings
 # when on heorku using environmemt variables, development use config/redis.yml
-if ENV['REDISTOGO_URL']
-  uri = URI.parse(ENV['REDISTOGO_URL'])
+if ENV['REDISCLOUD_URL']
+  uri = URI.parse(ENV['REDISCLOUD_URL'])
   $redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 else
   raise RuntimeError, "could not find config/redis.yml" unless File.exists?(Rails.root + 'config/redis.yml')
