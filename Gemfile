@@ -2,15 +2,11 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'sqlite3'
-
+gem 'unicorn'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'redis'
 gem 'rspec-rails'
-
-group :production do
-  gem 'pg'
-end
 
 group :development do
   gem 'thin'
