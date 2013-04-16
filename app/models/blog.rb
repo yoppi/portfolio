@@ -41,12 +41,15 @@ class HatenaBlogFeed
   end
 end
 
-class Blog < AbstractModel
+class Blog
+  include Redisable
+  kvs_key :entries
+
   def self.find_by_user(user)
-    ret = $redis.get(cache_key("find_by_user:#{user}"))
-    return ActiveSupport::JSON.decode(ret) if ret
+    ret = redis.get entries(user)
+    return JSON.parse(ret) if ret
     ret = HatenaBlogFeed.parse(user)
-    $redis.setex(cache_key("find_by_user:#{user}"), 360, ret.to_json)
+    redis.setex entries(user), 360, ret.to_json
     ret
   end
 end

@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'nokogiri'
 gem 'redis'
+gem 'redisable'
 gem 'rspec-rails'
 gem 'unicorn'
 
