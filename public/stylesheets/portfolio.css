@@ -5,42 +5,57 @@
 
 /** header {{{1*/
 #header h1 {
-  text-align: right;
-  font: Bold 55px 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font: 55px 'Open Sans', Arial, Helvetica, sans-serif;
   color: #888888;
-  border-bottom: 1px dashed #666666;
 }
-#menu { height: 50px; }
+
+#menu {
+  height: 50px;
+  text-align: center;
+}
 #menu ul { list-style: none; }
 #menu li { display: inline; }
 #menu a {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: bold;
   height: 35px;
   padding: 16px 40px 0px 40px;
   text-align: center;
   color: black;
+  text-decoration: none;
 }
 #menu a:hover, a.on {
-  background-color: #FF7700;
+  background-color: #F39C12;
   color: white;
 }
 
 /** content {{{1*/
 #content {
-  /** Google Font API is used to Lato font */
-  font: normal medium Lato,serif;
+  /** Google Font API is used to Open Sans font */
+  font: normal medium 'Open Sans',serif;
   text-align: justify;
   width: 80%;
+}
+h2 {
+  font-family: 'Lato', serif;
+  font-weight: normal;
 }
 #content li { margin-bottom: 5px; }
 
 /** home-container {{{2*/
-#home-container a, #activity-container a { font-weight: bold; color: #FF7700; text-decoration: none; }
-#home-container a:hover, #activity-container a:hover { text-decoration: underline; }
+#home-container a, #activity-container a {
+  font-weight: bold;
+  color: #F39C12;
+  text-decoration: none;
+}
+#home-container a:hover, #activity-container a:hover {
+  text-decoration: underline;
+}
 
 /** blog container {{{2*/
 #blog-container {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 #blog-title {
   text-align: right;
@@ -52,7 +67,7 @@
   text-decoration: none;
 }
 #blog-title a:hover {
-  color: #FF7700;
+  color: #f39c12;
 }
 #blog-items {
   position relative;
@@ -83,7 +98,7 @@
 
 /** twitter container {{{2*/
 #status-container {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 .status-item {
   border-bottom: 1px solid #EAEAEA;
@@ -141,8 +156,9 @@
 }
 /** footer {{{1*/
 #footer {
+  text-align: center;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   color: #888888;
   padding-top: 10px;
-  border-top: 1px dashed #666666;
 }
 /* vim: set foldmethod=marker: */
