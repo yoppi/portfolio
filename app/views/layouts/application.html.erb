@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Yoppi.true :my => "heart"</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag :application %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -14,5 +14,6 @@
 <%= yield %>
 </div>
 <%= render "layouts/footer" %>
+<%= javascript_include_tag :application %>
 </body>
 </html>
