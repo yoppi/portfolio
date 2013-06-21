@@ -4,6 +4,7 @@
 #header h1 {
   text-align: center;
   font: 55px 'Open Sans', Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
   color: #888888;
 }
 
@@ -30,6 +31,7 @@
 #content {
   /** Google Font API is used to Open Sans font */
   font: normal medium 'Open Sans',serif;
+  text-rendering: optimizeLegibility;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -155,6 +157,7 @@
 #footer {
   text-align: center;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
   color: #888888;
   padding-top: 10px;
 }
