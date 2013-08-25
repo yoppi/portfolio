@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :load_menu
+  before_action :load_menu
 
 private
   # TODO: generate from configuration file
