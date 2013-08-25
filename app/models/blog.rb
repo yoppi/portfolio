@@ -43,7 +43,7 @@ end
 
 class Blog
   include Redisable
-  kvs_key :entries
+  redis_key :entries
 
   def self.find_by_user(user)
     ret = redis.get entries(user)
